@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balaji Digital Ads - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="navbar">
+    <a class="nav-logo" href="index.html">
+        <img src="Images/Balaji Digital.png" alt="logo" class="nav-logo-img">
+        BALAJI <span>DIGITAL</span>
+    </a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li id="navAuthArea"><a href="#" class="nav-cta" id="navLoginBtn" onclick="openLogin(event)">Login</a></li>
+    </ul>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" onclick="modalOutsideClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeLogin()">✕</button>
+        <div class="modal-logo">🔐</div>
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Login karein ya naya account banayein</p>
+        <div class="modal-tabs">
+            <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+            <div class="mform-group"><label>Name</label><input type="text" id="loginName" placeholder="Aapka naam" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="loginPass" placeholder="Password" /></div>
+            <button class="modal-btn" onclick="doLogin()">Login →</button>
+            <p id="loginErr" class="form-err"></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="mform-group"><label>Full Name</label><input type="text" id="regName" placeholder="Aapka poora naam" /></div>
+            <div class="mform-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="regPass" placeholder="Password banayein" /></div>
+            <button class="modal-btn" onclick="doRegister()">Create Account →</button>
+            <p id="regErr" class="form-err"></p>
+        </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-welcome" id="heroWelcome" style="display:none;">
+            <span>👋</span> Namaste, <span id="heroUserName" class="hero-username"></span>!
+        </div>
+        <div class="hero-tag" id="heroTag">📍 Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.</div>
+        <h1>Smart Designs for a<br><em>Digital World</em></h1>
+        <p>Aapke business ko naye unchaiyon par le jaane ke liye professional graphic designs, websites, aur complete digital solutions — sab kuch ek hi jagah.</p>
+        <div class="hero-btns">
+            <a href="services.html" class="btn-primary">Explore Services</a>
+            <a href="https://wa.me/918989593938" class="btn-outline">WhatsApp Us</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Projects Done</div></div>
+            <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Happy Clients</div></div>
+            <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+        </div>
+    </div>
+    <div class="hero-badge">
+        <div class="hero-badge-icon">🏆</div>
+        <div class="hero-badge-text">Trusted Digital<br>Partner</div>
+        <div class="hero-badge-sub">Agar-Malwa, M.P.</div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <span class="marquee-item">Graphic Design</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Logo Design</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Website Development</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Social Media Ads</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Video Editing</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Data Management</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Festival Posters</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Banner Design</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Graphic Design</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Logo Design</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Website Development</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Social Media Ads</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Video Editing</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Data Management</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Festival Posters</span><span class="marquee-dot">✦</span>
+        <span class="marquee-item">Banner Design</span><span class="marquee-dot">✦</span>
+    </div>
+</div>
+
+<!-- TOP SERVICES -->
+<section class="page-section">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our Top <em>Services</em></h2>
+    <div class="section-line"></div>
+    <div class="preview-grid">
+        <div class="preview-card reveal"><div class="preview-icon">🎨</div><h3>Graphic Design</h3><p>Logos, banners, brand kits — sab kuch ek jagah.</p></div>
+        <div class="preview-card reveal reveal-delay-1"><div class="preview-icon">🌐</div><h3>Website Development</h3><p>Mobile-friendly, fast aur professional websites.</p></div>
+        <div class="preview-card reveal reveal-delay-2"><div class="preview-icon">📣</div><h3>Social Media Ads</h3><p>Facebook, Instagram aur Google ads jo kaam karte hain.</p></div>
+        <div class="preview-card reveal reveal-delay-3"><div class="preview-icon">🎬</div><h3>Video Editing</h3><p>Reels, YouTube videos aur promo clips editing.</p></div>
+    </div>
+    <div class="center-btn"><a href="services.html" class="btn-primary">View All Services →</a></div>
+</section>
+
+<!-- WHY US -->
+<section class="page-section alt-bg">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-title">Why <em>Balaji Digital?</em></h2>
+    <div class="section-line"></div>
+    <div class="why-grid">
+        <div class="why-card reveal"><div class="why-icon">⚡</div><h4>Fast Delivery</h4><p>Most designs ready in 24 hours.</p></div>
+        <div class="why-card reveal reveal-delay-1"><div class="why-icon">💰</div><h4>Affordable Price</h4><p>Professional quality, budget-friendly rates.</p></div>
+        <div class="why-card reveal reveal-delay-2"><div class="why-icon">🔄</div><h4>Free Revisions</h4><p>Jab tak 100% satisfied nahi, revisions milenge.</p></div>
+        <div class="why-card reveal reveal-delay-3"><div class="why-icon">🤝</div><h4>Direct Support</h4><p>WhatsApp par seedha designer se baat.</p></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-banner reveal">
+        <h2>Ready to Grow Your Business?</h2>
+        <p>Aaj hi contact karein aur apna free consultation lein.</p>
+        <a href="https://wa.me/918989593938" class="btn-white">💬 Chat on WhatsApp</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>BALAJI <span>DIGITAL</span></h3>
+            <p>Smart Designs for a Digital World. Your trusted creative & digital partner in Madhya Pradesh.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="social-btn">IG</a>
+                <a href="https://wa.me/918989593938" class="social-btn">WA</a>
+                <a href="#" class="social-btn">FB</a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Direct Reach</h4>
+            <p><strong style="color:var(--white)">Ajay Singh Panwar</strong><br>Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.<br>📧 ajaybannaji11@gmail.com<br>📸 <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" style="color:var(--gray);text-decoration:none;">@_official.ajay_</a></p>
+            <p class="phone">+91 89895 93938</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Balaji Digital Ads. All rights reserved.</p>
+        <p>Developed by <a href="#">Ajay Singh Panwar</a></p>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

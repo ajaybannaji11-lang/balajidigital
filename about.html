@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Balaji Digital Ads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="navbar">
+    <a class="nav-logo" href="index.html">
+        <img src="Images/Balaji Digital.png" alt="logo" class="nav-logo-img">
+        BALAJI <span>DIGITAL</span>
+    </a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li id="navAuthArea"><a href="#" class="nav-cta" id="navLoginBtn" onclick="openLogin(event)">Login</a></li>
+    </ul>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="modal-overlay" id="loginModal" onclick="modalOutsideClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeLogin()">✕</button>
+        <div class="modal-logo">🔐</div>
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Login karein ya naya account banayein</p>
+        <div class="modal-tabs">
+            <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+            <div class="mform-group"><label>Name</label><input type="text" id="loginName" placeholder="Aapka naam" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="loginPass" placeholder="Password" /></div>
+            <button class="modal-btn" onclick="doLogin()">Login →</button>
+            <p id="loginErr" class="form-err"></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="mform-group"><label>Full Name</label><input type="text" id="regName" placeholder="Aapka poora naam" /></div>
+            <div class="mform-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="regPass" placeholder="Password banayein" /></div>
+            <button class="modal-btn" onclick="doRegister()">Create Account →</button>
+            <p id="regErr" class="form-err"></p>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="section-tag">Hamare Baare Mein</div>
+    <h1 class="section-title">About <em>Balaji Digital</em></h1>
+    <p class="page-hero-sub">Ek sapne se shuru hui ek professional digital journey.</p>
+    <div class="section-line" style="margin:1.2rem auto 0;"></div>
+</section>
+
+<!-- FOUNDER SECTION with real photo -->
+<section class="page-section">
+    <div class="founder-block reveal">
+        <div class="founder-photo-wrap">
+            <img src="Images/about-photo.png" alt="Ajay Singh Panwar" class="founder-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="founder-circle-fallback" style="display:none;">AJ</div>
+        </div>
+        <div class="founder-info">
+            <div class="section-tag">Founder & Creative Director</div>
+            <h2 class="section-title" style="font-size:clamp(1.8rem,5vw,2.8rem); margin-bottom:1.2rem;">Ajay Singh <em>Panwar</em></h2>
+
+            <p class="founder-para">Main hoon <strong style="color:var(--white)">Ajay Singh Panwar</strong> — Balaji Digital Ads ka founder, creative director aur ek passionate digital creator. Meri kahani shuru hui Sajod, Agar-Malwa ke ek chhote se gaon se, jahan technology ke sapne dekhe jaate the lekin opportunities kam thi. Maine thaan liya ki creativity aur dedication se kuch aisa banaaunga jo logo ke kaam aaye.</p>
+
+            <p class="founder-para">Mujhe bachpan se hi design aur technology mein gehra interest tha. Jab baaki log khelte the, main Photoshop seekh raha tha. Jab logo ne kaha "ye nahi hoga", main aur mehnat karta gaya. Aaj, 3+ saalon ke experience ke baad, humne <strong style="color:var(--red)">500+ projects</strong> complete kiye hain aur <strong style="color:var(--red)">200+ clients</strong> ka trust jeeta hai.</p>
+
+            <p class="founder-para">Balaji Digital Ads sirf ek business nahi — yeh mera sapna hai. Mera sapna hai ki Madhya Pradesh ka har vyapari, har student, har neta — sab ko ek <strong style="color:var(--white)">professional digital identity</strong> mile. Chahe logo banana ho, website develop karni ho, social media ads chalane ho, ya exam papers format karne ho — hum sab kuch dete hain, aur dil se dete hain.</p>
+
+            <p class="founder-para">Mera mantra hai: <em style="color:var(--gold); font-style:normal; font-weight:600;">"Mehnat karo, quality do, aur client ka sapna apna samjho."</em> Yahi Balaji Digital ko alag banata hai. Hum sirf service provider nahi hain — hum aapke digital partner hain.</p>
+
+            <div class="founder-badges">
+                <span class="f-badge">🎨 Graphic Designer</span>
+                <span class="f-badge">💻 Web Developer</span>
+                <span class="f-badge">📊 Data Expert</span>
+                <span class="f-badge">🎬 Video Editor</span>
+                <span class="f-badge">📍 Agar-Malwa, M.P.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MISSION VISION VALUES -->
+<section class="page-section alt-bg">
+    <div class="section-tag">Hamare Lakshya</div>
+    <h2 class="section-title">Mission, Vision & <em>Values</em></h2>
+    <div class="section-line"></div>
+    <div class="mv-grid">
+        <div class="mv-card reveal">
+            <div class="mv-icon">🎯</div>
+            <h3>Our Mission</h3>
+            <p>Har business ko — chahe village mein ho ya shahar mein — ek professional digital presence dena. Hum affordable rates par premium quality deliver karte hain taaki koi bhi digital duniya mein peeche na rahe. Chhote se chhote vyapari ki bhi aawaz online pahunche — yahi humara mission hai.</p>
+        </div>
+        <div class="mv-card reveal reveal-delay-1">
+            <div class="mv-icon">🔭</div>
+            <h3>Our Vision</h3>
+            <p>Madhya Pradesh ka sabse trusted aur beloved digital creative studio banna. Ek aisa platform jahan har entrepreneur, student, aur professional apne sapne ko digital reality mein badal sake. Hum chahte hain ki "Balaji Digital" naam sunke logon ke chehre par muskaan aaye.</p>
+        </div>
+        <div class="mv-card reveal reveal-delay-2">
+            <div class="mv-icon">💎</div>
+            <h3>Our Values</h3>
+            <p>Quality, honesty, creativity aur client satisfaction — yahi hamare kaam ki neev hai. Hum sirf project complete nahi karte, hum relationships banate hain. Har design mein hum dil lagate hain, isliye hara kaam ek masterpiece hota hai.</p>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section class="page-section">
+    <div class="section-tag">Hamari Kahani</div>
+    <h2 class="section-title">Our <em>Journey</em></h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+        <div class="tl-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2022</div>
+            <div class="tl-content">
+                <h4>🌱 The Seed Was Planted</h4>
+                <p>Ek chhote se gaon mein, ek bade sapne ne janam liya. Ajay ne pehli baar graphic designing seekhi aur pehle kuch clients ke saath Balaji Digital Ads ki humble beginning hui. Koi badi dukaan nahi, koi team nahi — sirf ek laptop, ek sapna aur dil mein aag.</p>
+            </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-1">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2023</div>
+            <div class="tl-content">
+                <h4>🚀 Expansion Begins</h4>
+                <p>Website development aur social media management services add ki gayin. Word of mouth se clients barhne lage. 100+ happy clients ka pehla milestone reach kiya. Log kehne lage — "Balaji Digital se kaam karwao, quality guaranteed hai."</p>
+            </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-2">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+            <div class="tl-content">
+                <h4>💥 Full Digital Scale</h4>
+                <p>Video editing, data management aur exam paper drafting services launch huin. Instagram par following bhi badhi. 200+ clients aur 500+ projects complete — yeh sirf numbers nahi, yeh logon ka vishwas hai jo humne jeeta.</p>
+            </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-3">
+            <div class="tl-dot active"></div>
+            <div class="tl-year" style="color:var(--red)">2025–26</div>
+            <div class="tl-content">
+                <h4>⭐ Growing Stronger</h4>
+                <p>Aur bhi nayi services, website launch, aur products section. Madhya Pradesh ke har corner mein apni pehchan banana jaari hai. Aage bhi yahi junoon, yahi dedication — aur aapka pyaar hamare saath.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="page-section alt-bg">
+    <div class="big-stats">
+        <div class="big-stat reveal"><div class="big-num">500+</div><div class="big-label">Projects Completed</div></div>
+        <div class="big-stat reveal reveal-delay-1"><div class="big-num">200+</div><div class="big-label">Happy Clients</div></div>
+        <div class="big-stat reveal reveal-delay-2"><div class="big-num">12+</div><div class="big-label">Services Offered</div></div>
+        <div class="big-stat reveal reveal-delay-3"><div class="big-num">3+</div><div class="big-label">Years Experience</div></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-banner reveal">
+        <h2>Aapke Saath Kaam Karna Chahte Hain!</h2>
+        <p>Aaj hi connect karein — free consultation ke liye sirf ek message karo.</p>
+        <a href="contact.html" class="btn-white">📩 Contact Us Now</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>BALAJI <span>DIGITAL</span></h3>
+            <p>Smart Designs for a Digital World. Your trusted creative & digital partner in Madhya Pradesh.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="social-btn">IG</a>
+                <a href="https://wa.me/918989593938" class="social-btn">WA</a>
+                <a href="#" class="social-btn">FB</a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Direct Reach</h4>
+            <p><strong style="color:var(--white)">Ajay Singh Panwar</strong><br>Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.<br>📧 ajaybannaji11@gmail.com<br>📸 <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" style="color:var(--gray);text-decoration:none;">@_official.ajay_</a></p>
+            <p class="phone">+91 89895 93938</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Balaji Digital Ads. All rights reserved.</p>
+        <p>Developed by <a href="#">Ajay Singh Panwar</a></p>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

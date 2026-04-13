@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Balaji Digital Ads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav id="navbar">
+    <a class="nav-logo" href="index.html"><img src="Images/Balaji Digital.png" alt="logo" class="nav-logo-img">BALAJI <span>DIGITAL</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="products.html" class="nav-link active">Products</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li id="navAuthArea"><a href="#" class="nav-cta" id="navLoginBtn" onclick="openLogin(event)">Login</a></li>
+    </ul>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="modal-overlay" id="loginModal" onclick="modalOutsideClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeLogin()">✕</button>
+        <div class="modal-logo">🔐</div>
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Login karein ya naya account banayein</p>
+        <div class="modal-tabs">
+            <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+            <div class="mform-group"><label>Name</label><input type="text" id="loginName" placeholder="Aapka naam" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="loginPass" placeholder="Password" /></div>
+            <button class="modal-btn" onclick="doLogin()">Login →</button>
+            <p id="loginErr" class="form-err"></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="mform-group"><label>Full Name</label><input type="text" id="regName" placeholder="Aapka poora naam" /></div>
+            <div class="mform-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="regPass" placeholder="Password banayein" /></div>
+            <button class="modal-btn" onclick="doRegister()">Create Account →</button>
+            <p id="regErr" class="form-err"></p>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
+    <div class="modal-box product-modal-box">
+        <button class="modal-close" onclick="closeProductModalBtn()">✕</button>
+        <div class="prod-modal-inner">
+            <div class="prod-modal-img-wrap">
+                <img id="modalProductImg" src="" alt="" />
+            </div>
+            <div class="prod-modal-info">
+                <div class="prod-modal-badge" id="modalProductBadge"></div>
+                <h2 id="modalProductName" class="prod-modal-title"></h2>
+                <p id="modalProductDesc" class="prod-modal-desc"></p>
+                <div class="prod-modal-price" id="modalProductPrice"></div>
+                <div class="prod-modal-btns">
+                    <button class="modal-btn" id="modalWABtn" onclick="inquireProduct()">💬 Inquire on WhatsApp</button>
+                    <button class="modal-btn modal-btn-outline" id="modalWishBtn" onclick="toggleWishlistFromModal()">🤍 Add to Wishlist</button>
+                </div>
+                <p class="prod-modal-note">Click "Inquire" — aapka naam, product aur details seedha WhatsApp pe jayenge.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WISHLIST SIDEBAR -->
+<div class="wishlist-sidebar" id="wishlistSidebar">
+    <div class="wishlist-header">
+        <h3>🤍 My Wishlist</h3>
+        <button onclick="closeWishlist()">✕</button>
+    </div>
+    <div class="wishlist-items" id="wishlistItems">
+        <p class="wishlist-empty">Wishlist khali hai. Products add karein!</p>
+    </div>
+    <div class="wishlist-footer" id="wishlistFooter" style="display:none;">
+        <button class="modal-btn" onclick="sendWishlistWA()">💬 Send Wishlist to WhatsApp</button>
+    </div>
+</div>
+<div class="wishlist-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
+
+<!-- FLOATING WISHLIST BTN -->
+<button class="wishlist-fab" id="wishlistFab" onclick="openWishlist()">
+    🤍 <span id="wishlistCount" class="wishlist-count" style="display:none;">0</span>
+</button>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="section-tag">Our Products</div>
+    <h1 class="section-title">Design <em>Products</em></h1>
+    <p class="page-hero-sub">Inhe dekho, pasand aaye to seedha WhatsApp par enquiry karo!</p>
+    <div class="section-line" style="margin:1.2rem auto 0;"></div>
+</section>
+
+<!-- FILTER TABS -->
+<section class="page-section" style="padding-bottom:0;">
+    <div class="prod-filters" id="prodFilters">
+        <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProducts('logo', this)">Logo Design</button>
+        <button class="filter-btn" onclick="filterProducts('poster', this)">Posters</button>
+        <button class="filter-btn" onclick="filterProducts('banner', this)">Banners</button>
+        <button class="filter-btn" onclick="filterProducts('frame', this)">Photo Frames</button>
+        <button class="filter-btn" onclick="filterProducts('social', this)">Social Media</button>
+    </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="page-section" style="padding-top:1.5rem;">
+    <div class="products-grid" id="productsGrid">
+
+        <!-- TEMPLATE CARDS — Aap inhe apne real products se replace karein -->
+        <!-- Product 1 -->
+        <div class="prod-card reveal" data-cat="logo"
+             data-name="Premium Logo Design"
+             data-desc="Professional aur unique logo design aapke brand ke liye. Multiple formats mein deliver — PNG, JPG, PDF, SVG. Unlimited revisions jab tak satisfied nahi."
+             data-price="₹299 onwards"
+             data-badge="Popular"
+             data-img="Images/products/logo1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/logo1.jpg" alt="Premium Logo Design" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Logo+Design'">
+                <div class="prod-overlay">
+                    <button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button>
+                </div>
+                <div class="prod-badge">Popular</div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Premium Logo Design</h3>
+                <p class="prod-cat">Logo Design</p>
+                <div class="prod-price">₹299 onwards</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="prod-card reveal reveal-delay-1" data-cat="poster"
+             data-name="Diwali Festival Poster"
+             data-desc="Beautiful Diwali celebration poster — aapke naam, photo aur business ke saath customized. Print-ready high resolution file. WhatsApp par deliver hogi."
+             data-price="₹99 – ₹199"
+             data-badge="Festive"
+             data-img="Images/products/poster1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/poster1.jpg" alt="Diwali Poster" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Diwali+Poster'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <div class="prod-badge" style="background:var(--gold);color:#000;">Festive</div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Diwali Festival Poster</h3>
+                <p class="prod-cat">Poster Design</p>
+                <div class="prod-price">₹99 – ₹199</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="prod-card reveal reveal-delay-2" data-cat="banner"
+             data-name="Shop Banner / Flex Board"
+             data-desc="Aapki dukaan ke liye attractive aur professional flex banner design. Custom size, custom text, aur photo ke saath. Print ke liye print-ready file milegi."
+             data-price="₹199 – ₹499"
+             data-badge=""
+             data-img="Images/products/banner1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/banner1.jpg" alt="Shop Banner" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Shop+Banner'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Shop Banner / Flex Board</h3>
+                <p class="prod-cat">Banner Design</p>
+                <div class="prod-price">₹199 – ₹499</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="prod-card reveal reveal-delay-3" data-cat="frame"
+             data-name="Birthday Photo Frame"
+             data-desc="Khoobsurat birthday photo frame — aapki photo aur naam ke saath. Digital file WhatsApp par deliver hogi — seedha print karwa sakte hain ya share kar sakte hain."
+             data-price="₹49 – ₹99"
+             data-badge="New"
+             data-img="Images/products/frame1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/frame1.jpg" alt="Birthday Frame" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Birthday+Frame'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <div class="prod-badge" style="background:#1a7a1a;">New</div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Birthday Photo Frame</h3>
+                <p class="prod-cat">Photo Frame</p>
+                <div class="prod-price">₹49 – ₹99</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="prod-card reveal" data-cat="social"
+             data-name="Instagram Post Pack (10 Posts)"
+             data-desc="10 professional Instagram posts designed for your business — with your brand colors, logo aur custom text. Ready to post, weekly scheduled."
+             data-price="₹299 – ₹599"
+             data-badge="Trending"
+             data-img="Images/products/social1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/social1.jpg" alt="Instagram Pack" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Instagram+Pack'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <div class="prod-badge" style="background:#c0502a;">Trending</div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Instagram Post Pack</h3>
+                <p class="prod-cat">Social Media</p>
+                <div class="prod-price">₹299 – ₹599</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="prod-card reveal reveal-delay-1" data-cat="logo"
+             data-name="Business Card Design"
+             data-desc="Double-sided professional business card design — name, contact, logo sab ke saath. Print-ready CMYK format. 300 DPI high resolution file milegi."
+             data-price="₹149 – ₹249"
+             data-badge=""
+             data-img="Images/products/card1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/card1.jpg" alt="Business Card" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Business+Card'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Business Card Design</h3>
+                <p class="prod-cat">Logo Design</p>
+                <div class="prod-price">₹149 – ₹249</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="prod-card reveal reveal-delay-2" data-cat="poster"
+             data-name="Election Campaign Poster"
+             data-desc="Professional election campaign poster design with candidate photo, party symbol aur slogan. Available in multiple languages — Hindi aur English. Print-ready."
+             data-price="₹199 – ₹399"
+             data-badge=""
+             data-img="Images/products/election1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/election1.jpg" alt="Election Poster" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Election+Poster'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Election Campaign Poster</h3>
+                <p class="prod-cat">Poster Design</p>
+                <div class="prod-price">₹199 – ₹399</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="prod-card reveal reveal-delay-3" data-cat="frame"
+             data-name="Wedding Anniversary Frame"
+             data-desc="Romantic aur elegant anniversary photo frame — couple photo ke saath. Gold border, floral design. Digital file milegi — print aur share dono ke liye ready."
+             data-price="₹79 – ₹149"
+             data-badge=""
+             data-img="Images/products/wedding1.jpg">
+            <div class="prod-img-wrap">
+                <img src="Images/products/wedding1.jpg" alt="Wedding Frame" class="prod-img" onerror="this.src='https://placehold.co/400x300/800020/f5f0f0?text=Wedding+Frame'">
+                <div class="prod-overlay"><button class="prod-view-btn" onclick="openProductModal(this.closest('.prod-card'))">👁 View Details</button></div>
+                <button class="prod-wish-btn" onclick="toggleWishlist(this)" title="Add to Wishlist">🤍</button>
+            </div>
+            <div class="prod-info">
+                <h3 class="prod-name">Wedding Anniversary Frame</h3>
+                <p class="prod-cat">Photo Frame</p>
+                <div class="prod-price">₹79 – ₹149</div>
+                <div class="prod-actions">
+                    <button class="prod-wa-btn" onclick="inquireProductDirect(this.closest('.prod-card'))">💬 Inquire</button>
+                    <button class="prod-wish-btn-sm" onclick="toggleWishlist(this.closest('.prod-card').querySelector('.prod-wish-btn'))">🤍</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ADD MORE NOTE -->
+    <div class="prod-add-note reveal">
+        <div class="prod-note-inner">
+            <span style="font-size:2rem;">➕</span>
+            <p><strong>Aur bhi products add honge!</strong><br>Apni real product photo aur details <code>Images/products/</code> folder mein daalen.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-banner reveal">
+        <h2>Custom Product Chahiye?</h2>
+        <p>Koi bhi design, koi bhi size — seedha WhatsApp par batao.</p>
+        <a href="https://wa.me/918989593938" class="btn-white">💬 Custom Order Karein</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand"><h3>BALAJI <span>DIGITAL</span></h3><p>Smart Designs for a Digital World. Your trusted creative & digital partner in Madhya Pradesh.</p>
+            <div class="social-links"><a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="social-btn">IG</a><a href="https://wa.me/918989593938" class="social-btn">WA</a><a href="#" class="social-btn">FB</a></div>
+        </div>
+        <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-contact"><h4>Direct Reach</h4><p><strong style="color:var(--white)">Ajay Singh Panwar</strong><br>Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.<br>📧 ajaybannaji11@gmail.com<br>📸 <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" style="color:var(--gray);text-decoration:none;">@_official.ajay_</a></p><p class="phone">+91 89895 93938</p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Balaji Digital Ads. All rights reserved.</p><p>Developed by <a href="#">Ajay Singh Panwar</a></p></div>
+</footer>
+<script src="script.js"></script>
+<script src="products.js"></script>
+</body>
+</html>

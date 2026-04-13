@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - Balaji Digital Ads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav id="navbar">
+    <a class="nav-logo" href="index.html"><img src="Images/Balaji Digital.png" alt="logo" class="nav-logo-img">BALAJI <span>DIGITAL</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li id="navAuthArea"><a href="#" class="nav-cta" id="navLoginBtn" onclick="openLogin(event)">Login</a></li>
+    </ul>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="modal-overlay" id="loginModal" onclick="modalOutsideClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeLogin()">✕</button>
+        <div class="modal-logo">🔐</div>
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Login karein ya naya account banayein</p>
+        <div class="modal-tabs">
+            <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+            <div class="mform-group"><label>Name</label><input type="text" id="loginName" placeholder="Aapka naam" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="loginPass" placeholder="Password" /></div>
+            <button class="modal-btn" onclick="doLogin()">Login →</button>
+            <p id="loginErr" class="form-err"></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="mform-group"><label>Full Name</label><input type="text" id="regName" placeholder="Aapka poora naam" /></div>
+            <div class="mform-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="regPass" placeholder="Password banayein" /></div>
+            <button class="modal-btn" onclick="doRegister()">Create Account →</button>
+            <p id="regErr" class="form-err"></p>
+        </div>
+    </div>
+</div>
+
+<section class="page-hero">
+    <div class="section-tag">What We Offer</div>
+    <h1 class="section-title">Our <em>Services</em></h1>
+    <p class="page-hero-sub">Aapke business ke liye har zaroorat ka solution — ek hi jagah.</p>
+    <div class="section-line" style="margin:1.2rem auto 0;"></div>
+</section>
+
+<section class="page-section">
+    <div class="services-grid">
+        <div class="service-card reveal"><div class="service-badge">Popular</div><div class="service-icon">🎨</div><h3>Graphic Design</h3><p>Professional logos, business cards, letterheads aur complete brand identity kits jo aapke business ko crowd mein alag banaye.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Graphic%20Design%20service" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-1"><div class="service-icon">🌐</div><h3>Website Design & Development</h3><p>Beautiful, mobile-friendly websites for businesses, portfolios aur shops. Fast loading, SEO-ready aur professionally coded.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20a%20Website" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-2"><div class="service-badge">Trending</div><div class="service-icon">📣</div><h3>Social Media Ads</h3><p>Facebook, Instagram aur Google ke liye eye-catching ad creatives aur sponsored posts jo customer base badhate hain.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Social%20Media%20Ads" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-3"><div class="service-icon">🖼️</div><h3>Festival & Event Posters</h3><p>Diwali, Holi, Independence Day, elections aur sabhi occasions ke liye custom posters — print aur digital dono ke liye ready.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Festival%20Poster" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal"><div class="service-icon">🎬</div><h3>Video Editing & Reels</h3><p>YouTube thumbnails, Instagram Reels editing, promo videos aur motion graphics jo online presence ko boost karte hain.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Video%20Editing" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-1"><div class="service-icon">🖌️</div><h3>Banner & Flex Design</h3><p>High-resolution flex banners, hoardings, standees aur display boards for shops, events aur promotions — print-ready files.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Banner%20Design" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-2"><div class="service-icon">📸</div><h3>Photo Frame Design</h3><p>Custom photo frames for politicians, religious events, birthdays, weddings aur social media celebrations — unique aur attractive.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Photo%20Frame%20Design" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-3"><div class="service-icon">👕</div><h3>T-Shirt & Merchandise</h3><p>Creative designs for t-shirts, caps, mugs aur custom merchandise for events, schools aur businesses — bulk orders welcome.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Merchandise%20Design" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal"><div class="service-icon">📄</div><h3>Flyer & Pamphlet Design</h3><p>Attractive flyers aur pamphlets for product launches, offers, elections aur awareness campaigns — Hindi aur English dono mein.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Flyer%20Design" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-1"><div class="service-icon">📝</div><h3>Drafting & Documentation</h3><p>Professional drafting of letters, applications, notices, agreements aur official documents — Hindi aur English dono mein available.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Drafting%20help" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-2"><div class="service-icon">📊</div><h3>Data Management & Excel</h3><p>Excel sheets, data entry, MIS reports, pivot tables aur organized databases — business records ko perfect order mein rakhein.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Data%20Management" class="card-cta">Get Quote →</a></div>
+        <div class="service-card reveal reveal-delay-3"><div class="service-badge">New</div><div class="service-icon">📋</div><h3>Exam Paper Drafting</h3><p>Professional formatting of question papers, answer keys aur academic documents for schools aur institutes — neat aur error-free.</p><a href="https://wa.me/918989593938?text=Hello%2C%20I%20need%20Exam%20Paper%20Drafting" class="card-cta">Get Quote →</a></div>
+    </div>
+</section>
+
+<section class="page-section alt-bg">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Our Simple <em>Process</em></h2>
+    <div class="section-line"></div>
+    <div class="process-grid">
+        <div class="process-step reveal"><div class="process-num">01</div><h4>Contact Us</h4><p>WhatsApp ya email par apni requirement bataiye.</p></div>
+        <div class="process-step reveal reveal-delay-1"><div class="process-num">02</div><h4>Discuss & Plan</h4><p>Hum zaroorat samjhenge aur best solution suggest karenge.</p></div>
+        <div class="process-step reveal reveal-delay-2"><div class="process-num">03</div><h4>Design & Create</h4><p>Aapka kaam professionally aur timely complete kiya jaayega.</p></div>
+        <div class="process-step reveal reveal-delay-3"><div class="process-num">04</div><h4>Deliver & Support</h4><p>Final file deliver aur free revision agar zaroorat ho.</p></div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-banner reveal">
+        <h2>Koi Bhi Service Chahiye?</h2>
+        <p>WhatsApp par message karein — 5 minute mein reply guaranteed.</p>
+        <a href="https://wa.me/918989593938" class="btn-white">💬 Chat on WhatsApp</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand"><h3>BALAJI <span>DIGITAL</span></h3><p>Smart Designs for a Digital World. Your trusted creative & digital partner in Madhya Pradesh.</p>
+            <div class="social-links"><a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="social-btn">IG</a><a href="https://wa.me/918989593938" class="social-btn">WA</a><a href="#" class="social-btn">FB</a></div>
+        </div>
+        <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-contact"><h4>Direct Reach</h4><p><strong style="color:var(--white)">Ajay Singh Panwar</strong><br>Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.<br>📧 ajaybannaji11@gmail.com<br>📸 <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" style="color:var(--gray);text-decoration:none;">@_official.ajay_</a></p><p class="phone">+91 89895 93938</p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Balaji Digital Ads. All rights reserved.</p><p>Developed by <a href="#">Ajay Singh Panwar</a></p></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

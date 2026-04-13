@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Balaji Digital Ads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav id="navbar">
+    <a class="nav-logo" href="index.html"><img src="Images/Balaji Digital.png" alt="logo" class="nav-logo-img">BALAJI <span>DIGITAL</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        <li id="navAuthArea"><a href="#" class="nav-cta" id="navLoginBtn" onclick="openLogin(event)">Login</a></li>
+    </ul>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="modal-overlay" id="loginModal" onclick="modalOutsideClick(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeLogin()">✕</button>
+        <div class="modal-logo">🔐</div>
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Login karein ya naya account banayein</p>
+        <div class="modal-tabs">
+            <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
+        <div id="loginForm">
+            <div class="mform-group"><label>Name</label><input type="text" id="loginName" placeholder="Aapka naam" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="loginPass" placeholder="Password" /></div>
+            <button class="modal-btn" onclick="doLogin()">Login →</button>
+            <p id="loginErr" class="form-err"></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <div class="mform-group"><label>Full Name</label><input type="text" id="regName" placeholder="Aapka poora naam" /></div>
+            <div class="mform-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="+91 XXXXX XXXXX" /></div>
+            <div class="mform-group"><label>Password</label><input type="password" id="regPass" placeholder="Password banayein" /></div>
+            <button class="modal-btn" onclick="doRegister()">Create Account →</button>
+            <p id="regErr" class="form-err"></p>
+        </div>
+    </div>
+</div>
+
+<section class="page-hero">
+    <div class="section-tag">Get In Touch</div>
+    <h1 class="section-title">Contact <em>Us</em></h1>
+    <p class="page-hero-sub">Hum aapki baat sunne ke liye hamesha taiyaar hain.</p>
+    <div class="section-line" style="margin:1.2rem auto 0;"></div>
+</section>
+
+<section class="page-section">
+    <div class="contact-layout">
+        <div class="contact-info reveal">
+            <div class="contact-card"><div class="cc-icon">📞</div><div class="cc-content"><h4>Phone / WhatsApp</h4><p>+91 89895 93938</p><a href="https://wa.me/918989593938" class="cc-link" target="_blank">Open WhatsApp →</a></div></div>
+            <div class="contact-card"><div class="cc-icon">📧</div><div class="cc-content"><h4>Email</h4><p>ajaybannaji11@gmail.com</p><a href="mailto:ajaybannaji11@gmail.com" class="cc-link">Send Email →</a></div></div>
+            <div class="contact-card"><div class="cc-icon">📸</div><div class="cc-content"><h4>Instagram</h4><p>@_official.ajay_</p><a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="cc-link">Follow Us →</a></div></div>
+            <div class="contact-card"><div class="cc-icon">📍</div><div class="cc-content"><h4>Location</h4><p>Sajod, Agar-Malwa<br>Madhya Pradesh, India</p></div></div>
+            <div class="contact-hours">
+                <h4>⏰ Working Hours</h4>
+                <p>Monday – Saturday: <strong>9:00 AM – 8:00 PM</strong></p>
+                <p>Sunday: <strong>10:00 AM – 4:00 PM</strong></p>
+                <p style="margin-top:0.5rem; color:var(--red); font-size:0.82rem;">⚡ WhatsApp par 5 min mein reply</p>
+            </div>
+        </div>
+        <div class="contact-form-wrap reveal reveal-delay-2">
+            <h3 class="form-title">Send Us a <em>Message</em></h3>
+            <p class="form-sub">Form fill karein — directly WhatsApp par jayega!</p>
+            <div class="contact-form">
+                <div class="form-group"><label>Your Name</label><input type="text" id="fname" placeholder="Aapka naam likhein" /></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" /></div>
+                <div class="form-group full"><label>Service Required</label>
+                    <select id="fservice">
+                        <option value="">-- Select a Service --</option>
+                        <option>Graphic Design</option><option>Website Development</option><option>Social Media Ads</option>
+                        <option>Festival Poster</option><option>Video Editing</option><option>Banner & Flex Design</option>
+                        <option>Photo Frame Design</option><option>T-Shirt & Merchandise</option><option>Flyer & Pamphlet</option>
+                        <option>Drafting & Documentation</option><option>Data Management</option><option>Exam Paper Drafting</option><option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group full"><label>Your Message</label><textarea id="fmsg" rows="4" placeholder="Aapki requirement ke baare mein likhein..."></textarea></div>
+                <button class="form-submit" onclick="sendWhatsApp()">💬 Send via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section alt-bg">
+    <div class="section-tag">Common Questions</div>
+    <h2 class="section-title">FAQ — <em>Aksar Pooche Jaate Hain</em></h2>
+    <div class="section-line"></div>
+    <div class="faq-list">
+        <div class="faq-item reveal"><div class="faq-q">Kitne time mein kaam deliver hota hai?</div><div class="faq-a">Zyaadatar design work 24–48 ghante mein deliver ho jaata hai. Websites 5–10 din mein ready hoti hain. Urgent orders bhi accept kiye jaate hain.</div></div>
+        <div class="faq-item reveal reveal-delay-1"><div class="faq-q">Revision milega ya nahi?</div><div class="faq-a">Haan! Jab tak aap 100% satisfied nahi hote tab tak free revisions milenge. Aapki satisfaction hamare liye sabse important hai.</div></div>
+        <div class="faq-item reveal reveal-delay-2"><div class="faq-q">Payment kaise karein?</div><div class="faq-a">UPI, GPay, PhonePe, Paytm — sab accepted hain. Kuch projects mein advance payment aur balance delivery par liya jaata hai.</div></div>
+        <div class="faq-item reveal reveal-delay-3"><div class="faq-q">Kya online kaam ho sakta hai?</div><div class="faq-a">Bilkul! Hum puri tarah online kaam karte hain. WhatsApp par requirement bhejein aur final file online hi milegi.</div></div>
+        <div class="faq-item reveal"><div class="faq-q">Kya files print-ready format mein milti hain?</div><div class="faq-a">Haan! Design files high-resolution PDF, PNG aur editable formats mein provide ki jaati hain jo directly print ke liye ready hoti hain.</div></div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-banner reveal">
+        <h2>Abhi Baat Karein!</h2>
+        <p>Free consultation ke liye WhatsApp karein — bilkul free, koi commitment nahi.</p>
+        <a href="https://wa.me/918989593938" class="btn-white">💬 WhatsApp Now</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand"><h3>BALAJI <span>DIGITAL</span></h3><p>Smart Designs for a Digital World. Your trusted creative & digital partner in Madhya Pradesh.</p>
+            <div class="social-links"><a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" class="social-btn">IG</a><a href="https://wa.me/918989593938" class="social-btn">WA</a><a href="#" class="social-btn">FB</a></div>
+        </div>
+        <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="products.html">Products</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-contact"><h4>Direct Reach</h4><p><strong style="color:var(--white)">Ajay Singh Panwar</strong><br>Bade Darwaje ke pass Chhota Gawali Pura, Agar-Malwa, M.P.<br>📧 ajaybannaji11@gmail.com<br>📸 <a href="https://www.instagram.com/_official.ajay_/?__pwa=1#" target="_blank" style="color:var(--gray);text-decoration:none;">@_official.ajay_</a></p><p class="phone">+91 89895 93938</p></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Balaji Digital Ads. All rights reserved.</p><p>Developed by <a href="#">Ajay Singh Panwar</a></p></div>
+</footer>
+<script src="script.js"></script>
+<script>
+function sendWhatsApp() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const service = document.getElementById('fservice').value;
+    const msg = document.getElementById('fmsg').value.trim();
+    if (!name || !service) { alert('Please enter your name and select a service.'); return; }
+    const text = `Hello Balaji Digital Ads!%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone || 'Not provided')}%0A*Service Needed:* ${encodeURIComponent(service)}%0A*Message:* ${encodeURIComponent(msg || 'No message')}`;
+    window.open(`https://wa.me/918989593938?text=${text}`, '_blank');
+}
+</script>
+</body>
+</html>
